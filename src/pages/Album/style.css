@@ -1,0 +1,20 @@
+.plus {
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+}
+
+.IconPlus {
+  margin-top: 4px;
+}
+
+.album-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

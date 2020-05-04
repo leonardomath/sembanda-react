@@ -1,0 +1,28 @@
+body {
+  background: #111212;
+}
+
+.container {
+  margin-left: auto;
+  width: 100%;
+  max-width: calc(100% - 80px);
+  color: #fff;
+  padding: 20px;
+}
+
+.selection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.settings {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.selection .album {
+  height: 150px;
+}

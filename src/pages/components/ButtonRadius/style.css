@@ -1,0 +1,9 @@
+.buttonRadius {
+  margin-top: 5px;
+  width: 132px;
+  height: 33px;
+  background: #C17E03;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+}

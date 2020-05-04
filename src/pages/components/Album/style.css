@@ -1,0 +1,31 @@
+.album {
+  margin-top: 10px;
+  width: 280px;
+  height: 130px;
+  background: #0F0F0F;
+  border: 1px solid #000000;
+  display: flex;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.album .avatar-album img {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+}
+
+.album-info {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.album-info .band-name {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.album-info .band-album {
+  font-size: 16px;
+}
