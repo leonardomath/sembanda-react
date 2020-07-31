@@ -6,6 +6,7 @@ import Profile from './pages/Profile'
 import Album from './pages/Album'
 import Users from './pages/Users'
 import UserDeatil from './pages/UserDetail'
+import SignUp from './pages/SignUp'
 
 export default function Routes() {
   return (
@@ -16,6 +17,7 @@ export default function Routes() {
         <Route path="/album" exact component={Album} />
         <Route path="/users" exact component={Users} />
         <Route path="/userDetail" exact component={UserDeatil} />
+        <Route path="/signup" exact component={SignUp} />
       </Switch>
     </BrowserRouter>
   )

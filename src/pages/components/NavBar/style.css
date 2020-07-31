@@ -1,0 +1,55 @@
+.navbar {
+  background: #1B1B1C;
+}
+
+.navbar, .container-navbar {
+  height: 60px;
+}
+
+.container-navbar {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo img {
+  max-width: 160px;
+}
+
+.signin {
+  width: 100%;
+  max-width: 500px;
+}
+
+.signin form {
+  display: flex;
+  
+}
+
+.signin input {
+  background: #111212;
+  border: 1px solid #000000;
+  height: 50px;
+  width: 100%;
+  max-width: 200px !important;
+  padding-left: 10px;
+  margin-left:10px;
+  color: #686A6C;
+  font-size: 16px;
+}
+
+.signin button[type="submit"] {
+  height: 50px;
+  width: 100%;
+  max-width: 60px;
+  margin-left: 10px;
+  /* background: #0F0F0F; */
+  background: transparent;
+  border: none;
+  color: #E19200;
+  border: 1px solid #E19200;
+  cursor: pointer;
+}
