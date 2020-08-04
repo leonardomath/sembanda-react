@@ -19,21 +19,16 @@
 }
 
 .home_container .call .start {
-    background: transparent;
-    border: 3px solid #C17E03;
+    background: #C17E03;
     font-size: 22px;
-    color: #C17E03;
+    color: #000000;
     padding: 15px 70px;
     align-self: center;
     margin-top: 20px;
     align-self: center;
     text-decoration: none;
-}
-
-.home_container .call .start:hover {
-    border-color: #fff;
-    color: #fff;
-    cursor: pointer;
+    border-radius: 40px;
+    text-transform: normal;
 }
 
 

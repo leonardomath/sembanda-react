@@ -31,25 +31,27 @@
 
 .signin input {
   background: #111212;
-  border: 1px solid #000000;
-  height: 50px;
+  height: 40px;
   width: 100%;
   max-width: 200px !important;
   padding-left: 10px;
   margin-left:10px;
   color: #686A6C;
   font-size: 16px;
+  border-radius: 10px;
+  /* border: 1px solid #000000; */
+  border: none;
 }
 
 .signin button[type="submit"] {
-  height: 50px;
+  height: 40px;
   width: 100%;
   max-width: 60px;
   margin-left: 10px;
-  /* background: #0F0F0F; */
   background: transparent;
   border: none;
   color: #E19200;
   border: 1px solid #E19200;
   cursor: pointer;
+  border-radius: 10px;
 }
