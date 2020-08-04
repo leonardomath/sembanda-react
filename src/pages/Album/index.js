@@ -36,7 +36,7 @@ export default function Album() {
      console.log(response)
    }
    getAlbuns()
- })
+ }, [])
 
   function handleOpenBox() {
     const box = document.querySelector('.overlay')

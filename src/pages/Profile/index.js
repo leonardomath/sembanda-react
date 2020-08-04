@@ -19,6 +19,8 @@ export default function Profile() {
   const [city, setCity] = React.useState("");
   const [instrument, setInstrument] = React.useState("");
   const [avatar, setAvatar] = React.useState('')
+  const [select, setSelect] = React.useState('composicoes')
+  const [albuns, setAlbuns] = React.useState([])
 
   React.useEffect(() => {
     async function getDada() {
@@ -37,15 +39,29 @@ export default function Profile() {
       setAvatar(response.data.avatar_url)
     }
     getDada()
-  })
+  }, [history])
+
+  React.useEffect(() => {
+    async function getAlbums() {
+      const response = await api.get('userAlbums', {
+        headers: {
+          Authorization: 'Bearer '+window.localStorage.getItem('token')
+        }
+      })
+      setAlbuns(response.data)
+      console.log(response.data)
+    }
+    getAlbums()
+  },[])
 
   return (
     <section className="container">
       <Link to="userDetail"><GoSettings className="settings" size={32} color="#C17E03" /></Link>
       <LeftBar />
       <UserDetails name={name} city={city} instrument={instrument} avatar={avatar} />
-      <ProfileSelection />
+      <ProfileSelection setSelect={setSelect} />
       <section className="selection">
+        {select === 'bandas' ? albuns.map(albuns => <Album albuns={albuns.Album}/> ) : 'composicoes'}
       </section>
     </section>
   )

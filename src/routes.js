@@ -18,7 +18,7 @@ export default function Routes() {
         <PrivateRoute path="/album" exact component={Album} />
         <PrivateRoute path="/users" exact component={Users} />
         <PrivateRoute path="/userDetail" exact component={UserDeatil} />
-        <PrivateRoute path="/signup" exact component={SignUp} />
+        <Route path="/signup" exact component={SignUp} />
       </Switch>
     </BrowserRouter>
   )
