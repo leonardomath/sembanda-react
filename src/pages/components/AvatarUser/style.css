@@ -4,6 +4,7 @@
   height: 150px;
   border-radius: 50%;
   background: #fff;
+  cursor: pointer;
 }
 
 label {

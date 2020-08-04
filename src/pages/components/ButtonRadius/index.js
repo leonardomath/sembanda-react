@@ -2,8 +2,8 @@ import React from 'react'
 
 import './style.css'
 
-export default function ButtonRadius(props) {
+export default function ButtonRadius({ title, loading }) {
   return (
-    <button className="buttonRadius">{props.title}</button>
+  <button className="buttonRadius" disabled={loading ? true : false}>{loading ? 'Carregando...' : title }</button>
   )
 }

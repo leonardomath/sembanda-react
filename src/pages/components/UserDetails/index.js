@@ -5,17 +5,17 @@ import AvatarUser from '../AvatarUser'
 import './style.css'
 import { MdLocationOn } from 'react-icons/md'
 
-export default function UserDetials() {
+export default function UserDetials({ name, instrument, city, avatar }) {
   return (
     <section className="userDetails">
-      <AvatarUser />
+      <AvatarUser url={avatar} />
       <div className="userDescription">
         <ul>
-          <li>Zakk Wylde</li>
-          <li>Guitarrista</li>
+          <li>{name}</li>
+          <li>{instrument}</li>
           <li> <img src={Rock} alt="Rock" className="rock" /> <span>300</span></li>
         </ul>
-        <p className="location"> <MdLocationOn size={16} color="#C17E03" /> Manchester</p>
+        <p className="location"> <MdLocationOn size={16} color="#C17E03" /> {city}</p>
       </div>
     </section>
   )
