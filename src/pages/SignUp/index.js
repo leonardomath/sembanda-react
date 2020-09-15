@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import api from '../../services/api'
 import './style.css'
@@ -19,6 +19,17 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [instrument, setInstrument] = useState("");
   const [userState, setUserState] = useState("");
+  const [brazilStates, setBrazilStates] = useState([])
+
+  useEffect(() => {
+    async function getStates() {
+      const response = await api.get(
+        "http://www.geonames.org/childrenJSON?geonameId=3469034"
+      );
+      setBrazilStates(response.data.geonames);
+    }
+    getStates()
+  }, [])
 
   async function newUser(e) {
     e.preventDefault()
@@ -62,9 +73,14 @@ export default function SignUp() {
             <input type="text" placeholder="Nome" onChange={({target}) => setName(target.value)} value={name} />
             <input type="email" placeholder="E-mail" onChange={({target}) => setEmail(target.value)} value={email} />
             <input type="password" placeholder="Senha" onChange={({target}) => setPassword(target.value)} value={password} />
-            <input type="text" placeholder="Estado" onChange={({target}) => setUserState(target.value)} value={userState} />
+            <select onChange={({target}) => setUserState(target.value)} value={userState}>
+              <option value="" defaultValue disabled>Selecione seu estado</option>
+              {brazilStates.map((state) => (
+                <option key={state.name} value={state.name}>{state.name}</option>
+              ))}
+            </select>
             <select onChange={({target}) => setInstrument(target.value)} value={instrument}>
-              <option value="" selected disabled>Escolha seu instrumento</option>
+              <option value="" defaultValue disabled>Escolha seu instrumento</option>
               <option value="Guitarra">Guitarra</option>
               <option value="Violão">Violão</option>
               <option value="Baixo">Baixo</option>
