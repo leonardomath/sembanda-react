@@ -50,12 +50,15 @@ export default function UserDeail() {
     formData.append('email', email)
     formData.append('instrument', instrument)
     try {
-      await api.put("/user", formData, {
+      const response = await api.put("/user", formData, {
         headers: {
           Authorization: "Bearer " + window.localStorage.getItem("token"),
           "Content-Type": "multipart/form-data",
         },
       });
+      if (response.error) {
+        alert(response.error)
+      }
     } catch (error) {
       alert(error)
     }
