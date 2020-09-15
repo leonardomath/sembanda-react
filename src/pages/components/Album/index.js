@@ -23,20 +23,25 @@ function Album({ albuns: album, page }) {
   return (
     <section className="album">
       <div className="avatar-album">
-        <img
-          src={album.url}
-          alt={album.name}
-        />
+        <img src={album.url} alt={album.name} />
       </div>
       <div className="album-info">
         <ul>
           <li className="band-name">{album.band}</li>
           <li className="band-album">{album.name}</li>
-          {page ? <ButtonRadius title="Adicionar" albumId={album.id} setUserAlbum={setUserAlbum} /> : ""}
+          {page ? (
+            <ButtonRadius
+              title="Adicionar"
+              albumId={album.id}
+              setUserAlbum={() => setUserAlbum(album.id)}
+            />
+          ) : (
+            ""
+          )}
         </ul>
       </div>
     </section>
-  )
+  );
 }
 
 export default Album

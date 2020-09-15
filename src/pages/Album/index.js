@@ -17,6 +17,7 @@ export default function Album() {
   const [albumName, setAlbumName] = React.useState('')
   const [band, setBand] = React.useState('')
   const [avatar, setAvatar] = React.useState('')
+  const [loading, setLoading] = React.useState(false);
 
   async function storeAlbum() {
     const response = await api.post('/album', {
@@ -36,7 +37,7 @@ export default function Album() {
      console.log(response)
    }
    getAlbuns()
- }, [])
+ }, [loading])
 
   function handleOpenBox() {
     const box = document.querySelector('.overlay')
@@ -45,13 +46,13 @@ export default function Album() {
 
   return (
     <section className="container">
-      <Overlay />
+      <Overlay loading={loading} setLoading={setLoading} />
       <LeftBar />
       <button className="plus" onClick={handleOpenBox}><FaPlus className="IconPlus" size={18} color="#000" /></button>
       <h1>Album disponíveis</h1>
       <Search info="Procurar album" />
       <section className="album-list">
-        {albuns ? albuns.map(album => <Albuns page="album" albuns={album} />) : 'Sem albums'}
+        {albuns ? albuns.map((album, key) => <Albuns key={album+key} page="album" albuns={album} />) : 'Sem albums'}
       </section>
     </section>
   )

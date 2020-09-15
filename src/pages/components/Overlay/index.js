@@ -15,11 +15,10 @@ function previewImage(e) {
 }
 
 
-export default function Overlay({ useGetAlbums }) {
+export default function Overlay({ loading, setLoading }) {
   
   const [name, setName] = React.useState('')
   const [band, setBand] = React.useState('')
-  const [loading, setLoading] = React.useState(false)
 
   async function newAlbum(e) {
     setLoading(true)

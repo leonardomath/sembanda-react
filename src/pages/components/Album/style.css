@@ -9,10 +9,13 @@
   margin-right: 10px;
 }
 
+.avatar-album {
+  width: 109px;
+}
+
 .album .avatar-album img {
-  width: 100%;
-  max-width: 130px;
-  height: auto;
+  width: 110px;
+  height: 100%;
 }
 
 .album-info {
