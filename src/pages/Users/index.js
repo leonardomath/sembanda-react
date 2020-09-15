@@ -13,7 +13,12 @@ export default function Users() {
 
   React.useEffect(() => {
     async function getUsers() {
-      const response = await api.get('/users')
+      const response = await api.get("/users", {
+        headers: {
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
       setUsers(response.data)
     }
     getUsers()
@@ -24,7 +29,7 @@ export default function Users() {
       <h1>Encontrar usúarios</h1>
       <Search info="Procurar usúario" />
       <div className="users-find">
-        <UserProfile user={users} />
+        <UserProfile users={users} />
       </div>
     </section>
   )

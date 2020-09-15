@@ -4,9 +4,10 @@ import ButtonRadius from '../ButtonRadius/'
 
 import './style.css'
 
-export default function UserProfile({ users:user }) {
-  if (!user) return null
-  return (
+export default function UserProfile({ users }) {
+  console.log(users)
+  if (!users) return null
+  return users.map((user) => (
     <section className="user-profile">
       <img className="user-profile-avatar" src={user.avatar_url} alt="avatar" />
       <ul>
@@ -15,5 +16,5 @@ export default function UserProfile({ users:user }) {
         <li><ButtonRadius title="Ver perfil" /></li>
       </ul>
     </section>
-  )
+  ))
 }
