@@ -14,6 +14,7 @@ export default function UserDeail() {
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [instrument, setInstrument] = React.useState('')
+  const [avatar, setAvatar] = React.useState('')
 
   React.useEffect(() => {
     async function getData() {
@@ -29,34 +30,76 @@ export default function UserDeail() {
         setName(response.data.name)
         setEmail(response.data.email)
         setInstrument(response.data.instrument)
+        setAvatar(response.data.avatar_url)
       }
     }
     getData()
-  }, [history])
+  }, [])
 
   function previewImage(e) {
     const file = document.querySelector('#file')
     document.querySelector('.avatar').src = window.URL.createObjectURL(file.files[0])
   }
 
+  async function updateUser(e) {
+    e.preventDefault()
+    let formData = new FormData()
+    const image = document.querySelector("#file");
+    formData.append('file', image.files[0])
+    formData.append('name', name)
+    formData.append('email', email)
+    formData.append('instrument', instrument)
+    try {
+      await api.put("/user", formData, {
+        headers: {
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    } catch (error) {
+      alert(error)
+    }
+  }
+
   return (
     <section className="userDetail">
       <LeftBar />
       <section className="container">
-
-        <input
-          type="file"
-          name="" id="file"
-          onChange={previewImage} />
-        <label htmlFor="file">
-          <AvatarUser />
-        </label>
-        <input type="text" placeholder="Nome" value={name} />
-        <input type="email" disabled placeholder="E-mail" value={email} />
-        <input type="text" placeholder="Instrumento" value={instrument} />
-        <input type="password" placeholder="Senha" />
-        <ButtonRadius title="Salvar" />
+        <form onSubmit={updateUser} method="post" encType="multipart/form-data">
+          <input type="file" name="" id="file" onChange={previewImage} />
+          <label htmlFor="file">
+            <AvatarUser url={avatar} />
+          </label>
+          <input
+            type="text"
+            placeholder="Nome"
+            value={name}
+            onChange={({ target }) => setName(target.value)}
+          />
+          <input
+            type="email"
+            disabled
+            placeholder="E-mail"
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+          />
+          <select
+            onChange={({ target }) => setInstrument(target.value)}
+            value={instrument}
+          >
+            <option value="" defaultValue disabled>
+              Escolha seu instrumento
+            </option>
+            <option value="Guitarra">Guitarra</option>
+            <option value="Violão">Violão</option>
+            <option value="Baixo">Baixo</option>
+            <option value="Bateria">Bateria</option>
+            <option value="Teclado">Teclado</option>
+            <option value="Vocal">Vocal</option>
+          </select>
+          <ButtonRadius title="Salvar" type="submit" />
+        </form>
       </section>
     </section>
-  )
+  );
 }
