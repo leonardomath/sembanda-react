@@ -71,14 +71,25 @@ export default function Album() {
 
   return (
     <section className="container">
-      <Overlay loading={loading} setLoading={setLoading} />
+      <Overlay
+        loading={loading}
+        setLoading={setLoading}
+        noAlbum={noAlbum}
+        setNoAlbum={setNoAlbum}
+      />
       <LeftBar />
-      <button className="plus" onClick={handleOpenBox}><FaPlus className="IconPlus" size={18} color="#000" /></button>
+      <button className="plus" onClick={handleOpenBox}>
+        <FaPlus className="IconPlus" size={18} color="#000" />
+      </button>
       <h1>Album disponíveis</h1>
       <Search info="Procurar album" band={band} setBand={setBand} />
       <section className="album-list">
-        {albuns ? albuns.map((album, key) => <Albuns key={album+key} page="album" albuns={album} />) : 'Sem albums'}
+        {albuns
+          ? albuns.map((album, key) => (
+              <Albuns key={album + key} page="album" albuns={album} />
+            ))
+          : "Sem albums"}
       </section>
     </section>
-  )
+  );
 }
