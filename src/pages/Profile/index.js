@@ -23,6 +23,7 @@ export default function Profile() {
   const [avatar, setAvatar] = React.useState('')
   const [select, setSelect] = React.useState('composicoes')
   const [albuns, setAlbuns] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
     async function getDada() {
@@ -54,7 +55,7 @@ export default function Profile() {
       console.log(response.data)
     }
     getAlbums()
-  },[])
+  },[loading])
 
   return (
     <section className="container">
@@ -63,7 +64,7 @@ export default function Profile() {
       <UserDetails name={name} city={city} instrument={instrument} avatar={avatar} />
       <ProfileSelection setSelect={setSelect} />
       <section className="selection">
-        {select === 'bandas' ? albuns.map(albuns => <Album albuns={albuns.Album}/> ) : <UserSongs />}
+        {select === 'bandas' ? albuns.map(albuns => <Album albuns={albuns.Album} loading={loading} setLoading={setLoading} /> ) : <UserSongs />}
       </section>
     </section>
   )

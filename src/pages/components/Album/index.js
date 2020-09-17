@@ -5,7 +5,7 @@ import ButtonRadius from '../ButtonRadius'
 import './style.css'
 import api from '../../../services/api'
 
-function Album({ albuns: album, page }) {
+function Album({ albuns: album, page, loading, setLoading }) {
 
   async function setUserAlbum(album_id) {
     try {
@@ -20,8 +20,18 @@ function Album({ albuns: album, page }) {
     }
   }
 
+  async function removeAlbum(id) {
+    await api.post('/album/delete', {id}, {
+      headers: {
+        Authorization: "Bearer " + window.localStorage.getItem('token')
+      }
+    })
+    setLoading(!loading)
+  }
+
   return (
     <section className="album">
+      <button onClick={() => removeAlbum(album.id)}>x</button>
       <div className="avatar-album">
         <img src={album.url} alt={album.name} />
       </div>
