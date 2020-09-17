@@ -3,7 +3,7 @@ import './style.css'
 import ButtonRadius from '../ButtonRadius'
 import api from '../../../services/api'
 
-export default function UploadSong() {
+export default function UploadSong({ overlay, setOverlay }) {
 
   const [name, setName] = React.useState('')
 
@@ -13,26 +13,24 @@ export default function UploadSong() {
     let image = document.querySelector('#file')
     formData.append('title', name)
     formData.append('file', image.files[0])
-    try {
-      const response = api.post("/song", formData, {
-        headers: {
-          Authorization: "Bearer " + window.localStorage.getItem("token"),
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.error) {
-        alert('Erro ao enviar')
-      } else {
-        alert('sucesso')
-      }
-    } catch (error) {
-      alert('error')
-    }
+    const response = await api.post("/song", formData, {
+      headers: {
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    setOverlay(!overlay);
+  }
+
+  function exit(e) {
+    e.preventDefault()
+    setOverlay(!overlay);
   }
 
   return (
     <div className="overlay-song">
       <form method="POST" onSubmit={uploadSong} encType="multipart/form-data">
+        <button onClick={exit}>X</button>
         <label htmlFor="file">
           escolher musica
           <input id="file" type="file" />

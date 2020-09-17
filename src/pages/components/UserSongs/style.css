@@ -1,5 +1,8 @@
 .repertory {
   margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .repertory button {
@@ -10,4 +13,6 @@
   border: none;
   border: 1px solid #E19200;
   color: #E19200;
+  display: block;
+  margin-bottom: 20px;
 }
