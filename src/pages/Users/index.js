@@ -10,6 +10,8 @@ import './style.css'
 
 export default function Users() {
   const [users, setUsers] = React.useState([])
+  const [searchUser, setSearchUser] = React.useState('')
+  const [noUserFound, setNoUserFound] = React.useState(false)
 
   React.useEffect(() => {
     async function getUsers() {
@@ -22,15 +24,41 @@ export default function Users() {
       setUsers(response.data)
     }
     getUsers()
-  }, [])
+  }, [noUserFound])
+
+  React.useEffect(() => {
+    async function showUser() {
+      const response = await api.post('/search/user', {searchUser}, {
+        headers: {
+          Authorization: "Bearer "+ window.localStorage.getItem('token'),
+        }
+      })
+      if (response.data && searchUser) {
+        setUsers(response.data)
+        console.log("Usuario buscado: " + response.data);
+      }
+    }
+    if (searchUser != "") {
+      showUser();
+    }
+
+    if (!searchUser) {
+      setNoUserFound(!noUserFound)
+    }
+  }, [searchUser])
+
   return (
     <section className="container">
       <LeftBar />
-      <h1>Encontrar usúarios</h1>
-      <Search info="Procurar usúario" />
+  <h1>Encontrar usúarios</h1>
+      <Search
+        info="Procurar usúario"
+        searchUser={searchUser}
+        setSearchUser={setSearchUser}
+      />
       <div className="users-find">
         <UserProfile users={users} />
       </div>
     </section>
-  )
+  );
 }

@@ -82,7 +82,7 @@ export default function Album() {
         <FaPlus className="IconPlus" size={18} color="#000" />
       </button>
       <h1>Album disponíveis</h1>
-      <Search info="Procurar banda" band={band} setBand={setBand} />
+      <Search info="Procurar banda" page="album" band={band} setBand={setBand} />
       <section className="album-list">
         {albuns
           ? albuns.map((album, key) => (

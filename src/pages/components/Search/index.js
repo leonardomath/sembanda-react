@@ -10,13 +10,23 @@ export default function Search(props) {
       <span className="search-icon">
         <FaSearch />
       </span>
-      <input
-        className="searchInput"
-        type="text"
-        placeholder={props.info}
-        value={props.band}
-        onChange={(e) => props.setBand(e.target.value)}
-      />
+      {props.page === 'album' ? (
+        <input
+          className="searchInput"
+          type="text"
+          placeholder={props.info}
+          value={props.band}
+          onChange={(e) => props.setBand(e.target.value)}
+        />
+      ) : (
+        <input
+          className="searchInput"
+          type="text"
+          placeholder={props.info}
+          value={props.searchUser}
+          onChange={(e) => props.setSearchUser(e.target.value)}
+        />
+      )}
     </div>
   );
 }
