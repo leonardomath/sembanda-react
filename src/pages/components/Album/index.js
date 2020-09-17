@@ -31,7 +31,11 @@ function Album({ albuns: album, page, loading, setLoading }) {
 
   return (
     <section className="album">
-      <button onClick={() => removeAlbum(album.id)}>x</button>
+      { page && page === "Profile" ? (
+        <button className="close" onClick={() => removeAlbum(album.id)}>x</button>
+      ) : (
+        ""
+      )}
       <div className="avatar-album">
         <img src={album.url} alt={album.name} />
       </div>
