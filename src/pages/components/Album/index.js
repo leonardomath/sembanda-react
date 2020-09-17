@@ -31,8 +31,10 @@ function Album({ albuns: album, page, loading, setLoading }) {
 
   return (
     <section className="album">
-      { page && page === "Profile" ? (
-        <button className="close" onClick={() => removeAlbum(album.id)}>x</button>
+      {page && page === "Profile" ? (
+        <button className="close" onClick={() => removeAlbum(album.id)}>
+          x
+        </button>
       ) : (
         ""
       )}
@@ -43,7 +45,7 @@ function Album({ albuns: album, page, loading, setLoading }) {
         <ul>
           <li className="band-name">{album.band}</li>
           <li className="band-album">{album.name}</li>
-          {page ? (
+          {page && page === "album" ? (
             <ButtonRadius
               title="Adicionar"
               albumId={album.id}
