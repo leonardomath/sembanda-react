@@ -10,6 +10,8 @@ import ProfileSelection from '../components/ProfileSelection'
 import Album from '../components/Album'
 
 import api from '../../services/api'
+import UserSongs from '../components/UserSongs'
+import UploadSong from "../components/UploadSong";
 
 export default function Profile() {
 
@@ -58,10 +60,11 @@ export default function Profile() {
     <section className="container">
       <Link to="userDetail"><GoSettings className="settings" size={32} color="#C17E03" /></Link>
       <LeftBar />
+      <UploadSong />
       <UserDetails name={name} city={city} instrument={instrument} avatar={avatar} />
       <ProfileSelection setSelect={setSelect} />
       <section className="selection">
-        {select === 'bandas' ? albuns.map(albuns => <Album albuns={albuns.Album}/> ) : 'composicoes'}
+        {select === 'bandas' ? albuns.map(albuns => <Album albuns={albuns.Album}/> ) : <UserSongs />}
       </section>
     </section>
   )

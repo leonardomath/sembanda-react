@@ -1,0 +1,13 @@
+.repertory {
+  margin: 10px 0;
+}
+
+.repertory button {
+  padding: 10px 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #070707;
+  border: none;
+  border: 1px solid #E19200;
+  color: #E19200;
+}
