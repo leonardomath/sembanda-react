@@ -13,7 +13,7 @@ export default function UserDetials({ name, instrument, city, avatar }) {
         <ul>
           <li>{name}</li>
           <li>{instrument}</li>
-          <li> <img src={Rock} alt="Rock" className="rock" /> <span>300</span></li>
+          {/* <li> <img src={Rock} alt="Rock" className="rock" /> <span>300</span></li> */}
         </ul>
         <p className="location"> <MdLocationOn size={16} color="#C17E03" /> {city}</p>
       </div>
