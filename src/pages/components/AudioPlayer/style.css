@@ -1,4 +1,21 @@
 .audio-player {
+  padding: 10px 180px 10px 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+  background: #1C1C1C;
+  position: relative;
+  border-radius: 10px;
+}
+
+.media-controls button {
+  background: none;
+  color: #C17E03;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.media-controls .pause {
+  font-size: 12px;
 }

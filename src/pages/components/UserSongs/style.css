@@ -6,13 +6,13 @@
 }
 
 .repertory .btnAdicionar {
-  padding: 10px 50px;
-  border-radius: 20px;
+  padding: 10px 62px;
+  border-radius: 10px;
   cursor: pointer;
-  background: #070707;
+  background: #E19200;
   border: none;
-  border: 1px solid #E19200;
-  color: #E19200;
+  /* border: 1px solid #E19200; */
+  color: #070707;
   display: block;
   margin-bottom: 20px;
 }
