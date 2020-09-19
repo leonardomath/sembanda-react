@@ -62,7 +62,7 @@ export default function Profile() {
       <UserDetails name={name} city={city} instrument={instrument} avatar={avatar} />
       <ProfileSelection setSelect={setSelect} />
       <section className="selection">
-        {select === 'bandas' ? albuns.map(albuns => <Album page="Profile" albuns={albuns.Album} loading={loading} setLoading={setLoading} /> ) : <UserSongs />}
+        {select === 'bandas' ? albuns.map((albuns, index) => <Album key={albuns+index} page="Profile" albuns={albuns.Album} loading={loading} setLoading={setLoading} /> ) : <UserSongs />}
       </section>
     </section>
   )

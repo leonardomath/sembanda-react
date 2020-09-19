@@ -6,8 +6,8 @@ import './style.css'
 
 export default function UserProfile({ users }) {
   if (!users) return null
-  return users.map((user) => (
-    <section className="user-profile">
+  return users.map((user, index) => (
+    <section key={user,index} className="user-profile">
       <img className="user-profile-avatar" src={user.avatar_url} alt="avatar" />
       <ul>
         <li className="username">{user.name}</li>
