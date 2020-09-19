@@ -2,9 +2,10 @@ import React from 'react'
 import './style.css'
 import api from '../../../services/api';
 
-export default function AudioPlayer({url,title,id}) {
+export default function AudioPlayer({url,title,id, setLoading}) {
 
   async function removeSong(id) {
+    setLoading(true)
     try {
       await api.delete(`/song/${id}`, {
         headers: {
@@ -13,6 +14,8 @@ export default function AudioPlayer({url,title,id}) {
       });
     } catch (error) {
       alert(`Aconteceu um erro: ${error}`)
+    } finally {
+      setLoading(false)
     }
   }
   return (
