@@ -4,6 +4,8 @@ import ButtonRadius from '../components/ButtonRadius'
 import AvatarUser from '../components/AvatarUser'
 import api from '../../services/api'
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import './style.css'
 
@@ -57,14 +59,18 @@ export default function UserDeail() {
         },
       });
       if (response.error) {
-        alert(response.error)
+        toast.error(response.error)
+      } else {
+        toast.success('Informações atualizadas.')
       }
     } catch (error) {
-      alert(error)
+      toast.error("O sistema está indisponível no momento.");
     }
   }
 
   return (
+    <>
+      <ToastContainer />
     <section className="userDetail">
       <LeftBar />
       <section className="container">
@@ -104,5 +110,6 @@ export default function UserDeail() {
         </form>
       </section>
     </section>
+    </>
   );
 }

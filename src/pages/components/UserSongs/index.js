@@ -20,7 +20,6 @@ export default function UserSongs() {
       setSongs(response.data);
     }
     getSongs();
-    console.log('ativou')
   }, [overlay,loading]);
 
   return (
@@ -28,6 +27,7 @@ export default function UserSongs() {
       {overlay ? <UploadSong overlay={overlay} setOverlay={setOverlay} /> : ""}
       <div style={{ width: "100%" }}>
         <button
+          class="btnAdicionar"
           onClick={() => {
             setOverlay(!overlay);
           }}

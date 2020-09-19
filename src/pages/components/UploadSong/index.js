@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.css'
-import ButtonRadius from '../ButtonRadius'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import api from '../../../services/api'
 
 export default function UploadSong({ overlay, setOverlay }) {
@@ -10,16 +11,25 @@ export default function UploadSong({ overlay, setOverlay }) {
   async function uploadSong(e) {
     e.preventDefault()
     let formData = new FormData()
-    let image = document.querySelector('#file')
+    let song = document.querySelector('#file')
     formData.append('title', name)
-    formData.append('file', image.files[0])
-    const response = await api.post("/song", formData, {
-      headers: {
-        Authorization: "Bearer " + window.localStorage.getItem("token"),
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    setOverlay(!overlay);
+    formData.append('file', song.files[0])
+    try {
+      const response = await api.post("/song", formData, {
+        headers: {
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (response.data.error) {
+        toast.error(response.data.error)
+      } else {
+        setOverlay(!overlay);
+      }
+    } catch (error) {
+      toast.error("O sistema está indisponível no momento.");
+    } 
+    
   }
 
   function exit(e) {
@@ -28,9 +38,12 @@ export default function UploadSong({ overlay, setOverlay }) {
   }
 
   return (
+    <>
+    <ToastContainer />
     <div className="overlay-song">
+      
       <form method="POST" onSubmit={uploadSong} encType="multipart/form-data">
-        <button onClick={exit}>X</button>
+        <button onClick={exit} className="close">X</button>
         <label htmlFor="file">
           escolher musica
           <input id="file" type="file" />
@@ -41,8 +54,9 @@ export default function UploadSong({ overlay, setOverlay }) {
           value={name}
           onChange={({ target }) => setName(target.value)}
         />
-        <ButtonRadius title="enviar" type="submit" />
+        <button class="submit" type="submit">Enviar</button>
       </form>
     </div>
+    </>
   );
 }

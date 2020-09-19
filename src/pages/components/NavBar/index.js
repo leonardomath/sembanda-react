@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './style.css'
 import logo from './assets/logo.png'
 import logoSvg from './assets/logo-svg.svg'
@@ -15,24 +16,28 @@ const NavBar = () => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [loading, setLoading] = React.useState(null)
-  const [error, setError] = React.useState(false)
 
   async function handleSignIn(e) {
     e.preventDefault()
     setLoading(true)
-    const response = await api.post('/session', { email, password })
-    if (response.data.error) {
-      setError(response.data.error);
-      setLoading(false)
-    } else {
-      localStorage.setItem('token', response.data.token)
-      history.push('/profile')
+    try {
+      const response = await api.post("/session", { email, password });
+      if (response.data.error) {
+        toast.error(response.data.error);
+        setLoading(false);
+      } else {
+        localStorage.setItem("token", response.data.token);
+        history.push("/profile");
+      }
+    } catch (error) {
+      toast.error('O sistema está indisponível no momento.')
     }
+    
   }
 
   return (
     <nav className="navbar">
-      {error ? <Error title={error} /> : null}
+      <ToastContainer />
       <div className="container-navbar">
         <div className="logo">
           <Link to="/">

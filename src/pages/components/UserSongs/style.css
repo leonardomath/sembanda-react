@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.repertory button {
+.repertory .btnAdicionar {
   padding: 10px 50px;
   border-radius: 20px;
   cursor: pointer;

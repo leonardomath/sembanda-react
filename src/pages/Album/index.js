@@ -16,12 +16,11 @@ export default function Album() {
   const [albuns, setAlbuns] = React.useState([])
   const [albumName, setAlbumName] = React.useState('')
   const [band, setBand] = React.useState('')
-  const [avatar, setAvatar] = React.useState('')
   const [loading, setLoading] = React.useState(false);
   const [noAlbum, setNoAlbum] = React.useState(false) 
 
   async function storeAlbum() {
-    const response = await api.post('/album', {
+    await api.post('/album', {
       name: albumName,
       band,
     })
@@ -47,11 +46,7 @@ export default function Album() {
        },
      });
      if (response.data && band) {
-       console.log(response)
        setAlbuns(response.data);
-       console.log("albums da busca: " + response.data);
-     } else { 
-       console.log('sem album')
      }
    }
    if (band != '') {

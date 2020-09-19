@@ -5,7 +5,6 @@ import ButtonRadius from '../ButtonRadius/'
 import './style.css'
 
 export default function UserProfile({ users }) {
-  console.log(users)
   if (!users) return null
   return users.map((user) => (
     <section className="user-profile">

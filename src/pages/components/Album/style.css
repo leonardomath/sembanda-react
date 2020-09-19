@@ -1,7 +1,7 @@
 .album {
   margin-top: 10px;
   width: 280px;
-  height: 130px;
+  height: 160px;
   background: #0F0F0F;
   border: 1px solid #000000;
   display: flex;
@@ -22,7 +22,14 @@
 .album-info {
   padding: 0 10px;
   display: flex;
-  align-items: center;
+  align-items: top;
+  flex-wrap: wrap;
+}
+
+.album-info ul {
+  height: 90px;
+  overflow-y: auto;
+  background: transparent;
 }
 
 .album-info .band-name {
@@ -34,8 +41,9 @@
   font-size: 16px;
 }
 
-.album .close {
+.close {
   position: absolute;
+  top: 10px;
   right: 10px;
   padding: 4px 8px;
   border: none;

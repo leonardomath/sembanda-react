@@ -3,7 +3,6 @@ import React from 'react'
 import './style.css'
 
 export default function ButtonRadius({ title, ...props}) {
-  console.log(props)
   return (
     <button
       {...props}

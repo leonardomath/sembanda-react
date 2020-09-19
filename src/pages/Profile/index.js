@@ -11,7 +11,6 @@ import Album from '../components/Album'
 
 import api from '../../services/api'
 import UserSongs from '../components/UserSongs'
-import UploadSong from "../components/UploadSong";
 
 export default function Profile() {
 
@@ -52,7 +51,6 @@ export default function Profile() {
         }
       })
       setAlbuns(response.data)
-      console.log(response.data)
     }
     getAlbums()
   },[loading])

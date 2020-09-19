@@ -1,5 +1,6 @@
 import React from 'react'
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import ButtonRadius from '../ButtonRadius'
 
 import './style.css'
@@ -14,9 +15,9 @@ function Album({ albuns: album, page, loading, setLoading }) {
           Authorization: "Bearer " + window.localStorage.getItem('token')
         }
       })
-      alert('adicionado')
+      toast.success('Album adicionado ao perfil')
     } catch (error) {
-      alert(error)
+      toast.error("O sistema está indisponível no momento.");
     }
   }
 
@@ -31,6 +32,7 @@ function Album({ albuns: album, page, loading, setLoading }) {
 
   return (
     <section className="album">
+      <ToastContainer />
       {page && page === "Profile" ? (
         <button className="close" onClick={() => removeAlbum(album.id)}>
           x
@@ -45,16 +47,16 @@ function Album({ albuns: album, page, loading, setLoading }) {
         <ul>
           <li className="band-name">{album.band}</li>
           <li className="band-album">{album.name}</li>
-          {page && page === "album" ? (
-            <ButtonRadius
-              title="Adicionar"
-              albumId={album.id}
-              setUserAlbum={() => setUserAlbum(album.id)}
-            />
-          ) : (
-            ""
-          )}
         </ul>
+        {page && page === "album" ? (
+          <ButtonRadius
+            title="Adicionar"
+            albumId={album.id}
+            setUserAlbum={() => setUserAlbum(album.id)}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );

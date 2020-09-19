@@ -4,6 +4,8 @@ import api from '../../services/api'
 import './style.css'
 import AvatarUser from '../components/AvatarUser'
 import { useHistory } from 'react-router-dom'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function previewImage(e) {
   const file = document.querySelector('#file')
@@ -48,16 +50,21 @@ export default function SignUp() {
           "Content-Type": "multipart/form-data",
         },
       });
-      window.localStorage.setItem("token", response.data.token)
-      history.push("/profile")
+      if (response.data.error) {
+        toast.error(response.data.error)
+      } else {
+        window.localStorage.setItem("token", response.data.token)
+        history.push("/profile")
+      }
     } catch (error) {
-      alert(error)
+      toast.error("O sistema está indisponível no momento.");
     }
   }
 
   return (
     <div>
       <NavBar />
+      <ToastContainer />
       <div className="box-signup">
         <div className="random-images" style={{ background: "url('https://source.unsplash.com/collection/827741/500x900') no-repeat center center"}}>
           

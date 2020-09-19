@@ -35,7 +35,6 @@ export default function Users() {
       })
       if (response.data && searchUser) {
         setUsers(response.data)
-        console.log("Usuario buscado: " + response.data);
       }
     }
     if (searchUser != "") {
