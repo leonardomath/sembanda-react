@@ -28,7 +28,7 @@ export default function UserSongs() {
       <div style={{ width: '100%' }}>
       <button onClick={() => {setOverlay(!overlay)}}>Enviar nova musica</button>
       </div>
-      {songs ? songs.map((song) => <AudioPlayer url={song.Song.song_path} title={song.Song.title} />) : ""}
+      {songs ? songs.map((song) => <AudioPlayer id={song.Song.id} url={song.Song.song_path} title={song.Song.title} />) : ""}
     </div>
   );
 }
