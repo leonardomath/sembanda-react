@@ -3,7 +3,7 @@
   margin-bottom: 10px;
 }
 
-.userDetail input, select {
+.userDetail input, .userDetail select, .select {
   display: block;
   width: 100%;
   max-width: 240px;
@@ -15,6 +15,12 @@
   background: #282A2D;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #c17e03;
+}
+
+.select {
+  margin-bottom: 5px;
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 14px;
 }
 
 .userDetail input:nth-of-type(3) {
